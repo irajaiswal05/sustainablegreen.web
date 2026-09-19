@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Sustainable Energy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --rhino: #1B475D;
+            --neptune: #8EBD9D;
+            --olive: #B4BD62;
+            --naples: #FAD564;
+            --bg-light: #F8FAFC;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--rhino);
+            color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .heading-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtext-accent, .nav-logo, .nav-links, label {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(27, 71, 93, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--bg-light);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--naples); }
+
+        .contact-hero {
+            min-height: 100vh;
+            background-image: url('images/pf1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 5vw 80px;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(27,71,93,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+
+        .tilt-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 650px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 32px;
+            padding: 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        }
+
+        .glass-card h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 10px;
+        }
+
+        .glass-card p {
+            color: var(--neptune);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .glass-input, .glass-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--bg-light);
+            border-radius: 12px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .glass-input:focus, .glass-select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--neptune);
+        }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .glass-select option {
+            background-color: var(--rhino);
+            color: var(--bg-light);
+        }
+
+        label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .submit-btn {
+            background-color: var(--naples);
+            color: var(--rhino);
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            width: 100%;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--bg-light);
+            transform: translateY(-3px);
+        }
+
+        .landscape-footer {
+            height: 90vh;
+            background-image: url('images/p6.jpg');
+            background-size: cover;
+            background-position: bottom;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .footer-gradient {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, var(--rhino) 0%, transparent 40%, rgba(27, 71, 93, 0.8) 100%);
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 0 5vw 20px;
+        }
+
+        .footer-links a, .social-icons a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-right: 30px;
+            transition: color 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover, .social-icons a:hover { color: var(--naples); }
+
+        .massive-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12.5vw, 18rem); 
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.7;
+            letter-spacing: -2px;
+            text-align: center;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .glass-card { padding: 30px; }
+            .footer-links { text-align: left !important; margin-top: 20px; }
+            .footer-links a { display: inline-block; margin-bottom: 10px; margin-right: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="premium-nav">
+        <a href="index.html" class="nav-logo">SUSTAINABLE.</a>
+        <div class="nav-links d-none d-md-block">
+            <a href="index.html">Home</a>
+            <a href="solar.html">Solar</a>
+            <a href="wind.html">Wind</a>
+            <a href="lifestyle.html">Lifestyle</a>
+            <a href="energy-storage.html">Storage</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section class="contact-hero">
+        <div class="tilt-wrapper">
+            <div class="glass-card">
+                <h1 class="heading-elegant">Get in touch.</h1>
+                <p>We are ready to build the future with you.</p>
+
+                <form action="#" method="POST" class="form-element">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="glass-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="glass-input" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <label for="interest">Subject</label>
+                    <select id="interest" class="glass-select" required>
+                        <option value="" disabled selected>Select an area of interest...</option>
+                        <option value="solar">Solar Energy Solutions</option>
+                        <option value="wind">Wind Power Integration</option>
+                        <option value="lifestyle">Green Lifestyle Consulting</option>
+                        <option value="storage">Energy Storage Systems</option>
+                    </select>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" class="glass-input" rows="3" placeholder="How can we help?" required></textarea>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="landscape-footer">
+        <div class="footer-gradient"></div>
+        <div class="footer-content">
+            <div class="row align-items-end mb-4 border-bottom border-secondary pb-4">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <div class="social-icons mb-3">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                    <div style="color: var(--neptune); font-family: 'Space Grotesk', sans-serif;">
+                        Designed & Developed by <strong class="text-white">Ira Jaiswal</strong>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-lg-end footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="solar.html">Solar</a>
+                    <a href="wind.html">Wind</a>
+                    <a href="lifestyle.html">Lifestyle</a>
+                    <a href="energy-storage.html">Storage</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="massive-text">SUSTAINABLE</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <script>
+        gsap.from(".tilt-wrapper", {
+            y: 50,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            delay: 0.2
+        });
+    </script>
+</body>
+</html>

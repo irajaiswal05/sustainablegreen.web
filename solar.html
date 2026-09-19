@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Energy | Sustainable Energy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --rhino: #1B475D;
+            --neptune: #8EBD9D;
+            --olive: #B4BD62;
+            --naples: #FAD564;
+            --bg-light: #F8FAFC;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--rhino);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .heading-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtext-accent, .nav-logo, .nav-links, .calc-label, .metric-title {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- NAVIGATION --- */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(27, 71, 93, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--bg-light);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--naples); }
+
+        .page-hero {
+            height: 85vh;
+            background-image: url('images/s1.jpg');
+            background-color: var(--rhino);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 5vw;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(27, 71, 93, 0.95) 0%, rgba(27, 71, 93, 0.4) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--bg-light);
+            margin-top: 80px;
+        }
+
+        .reveal-wrap { overflow: hidden; display: block; }
+
+        .hero-content h1 {
+            font-size: clamp(3.8rem, 8vw, 7rem);
+            line-height: 1.05;
+            margin: 15px 0;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--neptune);
+            max-width: 620px;
+            font-weight: 300;
+        }
+
+        .calc-section {
+            padding: 140px 5vw;
+            background-color: var(--rhino);
+            color: var(--bg-light);
+            position: relative;
+        }
+
+        .calc-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 60px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .slider-container { margin: 50px 0 60px; }
+
+        .custom-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--naples);
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(250, 213, 100, 0.6);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .custom-range::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            background: var(--bg-light);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .metric-card {
+            border-left: 2px solid var(--neptune);
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+
+        .metric-val {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            font-weight: 700;
+            color: var(--naples);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .metric-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.5;
+        }
+
+        .scale-section {
+            padding: 150px 5vw;
+            background-color: var(--bg-light);
+        }
+
+        .section-header {
+            max-width: 820px;
+            margin: 0 auto 100px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            line-height: 1.15;
+            margin-top: 15px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .scale-row {
+            margin-bottom: 140px;
+            align-items: center;
+        }
+
+        .scale-img-wrap {
+            width: 100%;
+            height: 550px;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: rgba(27, 71, 93, 0.05);
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        }
+
+        .scale-img {
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            position: absolute;
+            top: -10%;
+            left: 0;
+        }
+
+        .scale-info { padding: 0 50px; }
+
+        .scale-tag {
+            color: var(--neptune);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .scale-info h3 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .scale-info p {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .stat-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(27, 71, 93, 0.06);
+            border-radius: 40px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--rhino);
+        }
+
+        .stat-badge i {
+            color: var(--olive);
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .impact-section {
+            padding: 150px 5vw;
+            background-color: var(--rhino);
+            color: var(--bg-light);
+            position: relative;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-image: url('images/s5.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .impact-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-text h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 20px;
+            color: var(--bg-light);
+        }
+
+        .impact-text p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        .chart-container-bar {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            background: rgba(0,0,0,0.2);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .impact-pillar {
+            background: rgba(255,255,255,0.03);
+            border-top: 3px solid var(--neptune);
+            padding: 40px 30px;
+            border-radius: 12px;
+            height: 100%;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .impact-pillar:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .impact-pillar h4 {
+            color: var(--naples);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .impact-pillar p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* --- FOOTER --- */
+        .landscape-footer {
+            height: 90vh;
+            background-image: url('images/p6.jpg');
+            background-size: cover;
+            background-position: bottom;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .footer-gradient {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, var(--bg-light) 0%, transparent 40%, rgba(27, 71, 93, 0.95) 100%);
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 0 5vw 20px;
+        }
+
+        .footer-links a, .social-icons a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-right: 30px;
+            transition: color 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover, .social-icons a:hover { color: var(--naples); }
+
+        .massive-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12.5vw, 18rem); 
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.7;
+            letter-spacing: -2px;
+            text-align: center;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .scale-info { padding: 30px 0 0; }
+            .scale-img-wrap { height: 380px; }
+            .calc-box { padding: 35px 25px; }
+            .scale-row { margin-bottom: 90px; }
+            .impact-pillar { margin-bottom: 20px; }
+            .footer-links { text-align: left !important; margin-top: 20px; }
+            .footer-links a { display: inline-block; margin-bottom: 10px; margin-right: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="premium-nav">
+        <a href="index.html" class="nav-logo">SUSTAINABLE.</a>
+        <div class="nav-links d-none d-md-block">
+            <a href="index.html">Home</a>
+            <a href="solar.html">Solar</a>
+            <a href="wind.html">Wind</a>
+            <a href="lifestyle.html">Lifestyle</a>
+            <a href="energy-storage.html">Storage</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="page-hero">
+        <div class="hero-content">
+            <div class="reveal-wrap">
+                <span class="subtext-accent text-white-50 reveal-target">01 — Solar Power</span>
+            </div>
+            <div class="reveal-wrap">
+                <h1 class="heading-elegant reveal-target">Endless<br>Energy.</h1>
+            </div>
+            <div class="reveal-wrap mt-3">
+                <p class="reveal-target">Every hour, the sun provides more energy than the whole world uses in a year. Capturing this light is the key to a clean, sustainable future.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-11">
+                    <div class="calc-box gsap-fade-up">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-lg-7">
+                                <span class="calc-label text-warning">Interactive Solar Calculator</span>
+                                <h2 class="heading-elegant mt-2 mb-3">See Your Impact</h2>
+                                <p class="text-white-50 m-0">Drag the slider to see how much power solar panels can generate—from a single home roof to a massive desert farm—and see how much pollution it prevents.</p>
+                            </div>
+                            <div class="col-lg-5 text-lg-end mt-4 mt-lg-0">
+                                <span class="calc-label text-white-50 d-block">System Size</span>
+                                <span id="capacityDisplay" class="metric-val" style="color: var(--naples);">250 kW</span>
+                            </div>
+                        </div>
+
+                        <div class="slider-container">
+                            <input type="range" min="10" max="10000" value="250" step="10" class="custom-range" id="solarSlider">
+                            <div class="slider-labels">
+                                <span class="calc-label">Small Home</span>
+                                <span class="calc-label">Large Business</span>
+                                <span class="calc-label">Huge Solar Farm</span>
+                            </div>
+                        </div>
+
+                        <div class="row g-4 mt-2">
+                            <div class="col-md-4">
+                                <div class="metric-card">
+                                    <div class="metric-title text-white-50">Homes Powered</div>
+                                    <div class="metric-val" id="homesPowered">48</div>
+                                    <div class="metric-desc">How many average homes this size system can power for a full year.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="metric-card" style="border-left-color: var(--olive);">
+                                    <div class="metric-title text-white-50">Clean Electricity</div>
+                                    <div class="metric-val" id="cleanMWh">412 MWh</div>
+                                    <div class="metric-desc">The total amount of clean electricity created each year.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="metric-card" style="border-left-color: var(--naples);">
+                                    <div class="metric-title text-white-50">Carbon Saved</div>
+                                    <div class="metric-val" id="carbonOffset">178 Tons</div>
+                                    <div class="metric-desc">The amount of harmful carbon dioxide pollution kept out of the air.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="scale-section">
+        <div class="container">
+            
+            <div class="section-header gsap-fade-up">
+                <span class="subtext-accent text-muted">How We Use Solar</span>
+                <h2 class="heading-elegant">Working together with nature and our cities.</h2>
+                <p>Solar energy is more than just panels on a roof. Today, it works side-by-side with farming and powers our biggest cities.</p>
+            </div>
+
+            <div class="row scale-row gsap-fade-up">
+                <div class="col-lg-6">
+                    <div class="scale-img-wrap">
+                        <img src="images/s3.jpg" alt="Farming and Solar" class="scale-img parallax-target">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="scale-info">
+                        <span class="subtext-accent scale-tag">Farming & Solar</span>
+                        <h3 class="heading-elegant">Growing Crops Under Panels</h3>
+                        <p>By placing solar panels high above farm fields, we can provide shade for crops on hot days. This saves water, helps plants grow better, and keeps the solar panels cool so they create more electricity.</p>
+                        <div class="stat-badge">
+                            <i class="bi bi-droplet-half"></i> Saves farm water
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row scale-row flex-lg-row-reverse gsap-fade-up">
+                <div class="col-lg-6">
+                    <div class="scale-img-wrap">
+                        <img src="images/s2.jpg" alt="City Solar" class="scale-img parallax-target">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="scale-info">
+                        <span class="subtext-accent scale-tag">City Power</span>
+                        <h3 class="heading-elegant">Solar Built Into Cities</h3>
+                        <p>We are turning glass buildings, windows, and parking lots into power plants. Making electricity right where people live means we don't lose power sending it across long distances.</p>
+                        <div class="stat-badge">
+                            <i class="bi bi-shield-check"></i> Power right where we need it
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row scale-row gsap-fade-up">
+                <div class="col-lg-6">
+                    <div class="scale-img-wrap">
+                        <img src="images/s4.jpg" alt="Desert Solar Farm" class="scale-img parallax-target">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="scale-info">
+                        <span class="subtext-accent scale-tag">Massive Scale</span>
+                        <h3 class="heading-elegant">Huge Desert Solar Farms</h3>
+                        <p>In hot, sunny deserts, massive solar farms track the sun as it moves across the sky. These giant fields of panels create enough power to run whole factories and cities without burning any coal or gas.</p>
+                        <div class="stat-badge">
+                            <i class="bi bi-sun"></i> Panels move to follow the sun
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="impact-section">
+        <div class="container impact-content">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 gsap-fade-up">
+                    <div class="impact-text">
+                        <span class="calc-label" style="color: var(--olive);">Protecting Our Planet</span>
+                        <h2 class="heading-elegant mt-2">Why we need to switch to solar now.</h2>
+                        <p>Moving to solar is about saving our environment. The chart below shows just how much pollution we can stop by choosing solar energy over dirty fossil fuels like coal and gas.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0 gsap-fade-up">
+                    <div class="chart-container-bar">
+                        <canvas id="emissionsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-4">
+                <div class="col-md-4 gsap-fade-up">
+                    <div class="impact-pillar" style="border-color: var(--naples);">
+                        <h4 class="heading-elegant">The Big Advantage</h4>
+                        <p>Solar runs on free, endless sunlight. We don't need to dig holes in the earth for fuel, and we don't need to transport it across the ocean. Once it is built, the energy is practically free.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gsap-fade-up">
+                    <div class="impact-pillar" style="border-color: var(--olive);">
+                        <h4 class="heading-elegant">The Global Need</h4>
+                        <p>Our climate is changing fast because of the pollution we put into the air. We need to replace dirty energy with clean solar power immediately to protect the earth for the future.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 gsap-fade-up">
+                    <div class="impact-pillar" style="border-color: var(--neptune);">
+                        <h4 class="heading-elegant">Healing the Earth</h4>
+                        <p>Solar power helps stop mountains from being mined, keeps dirty chemicals out of our drinking water, and stops harmful smoke from polluting the air we breathe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="landscape-footer">
+        <div class="footer-gradient"></div>
+        <div class="footer-content">
+            <div class="row align-items-end mb-4 border-bottom border-secondary pb-4">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <div class="social-icons mb-3">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                    <div style="color: var(--neptune); font-family: 'Space Grotesk', sans-serif;">
+                        Designed & Developed by <strong class="text-white">Ira Jaiswal</strong>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-lg-end footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="solar.html">Solar</a>
+                    <a href="wind.html">Wind</a>
+                    <a href="lifestyle.html">Lifestyle</a>
+                    <a href="energy-storage.html">Storage</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="massive-text">SUSTAINABLE</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".reveal-target", {
+            y: 150,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+            stagger: 0.15,
+            delay: 0.2
+        });
+
+        const fadeElements = document.querySelectorAll('.gsap-fade-up');
+        fadeElements.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+      
+        const parallaxTargets = document.querySelectorAll('.parallax-target');
+        parallaxTargets.forEach((img) => {
+            gsap.to(img, {
+                y: "15%",
+                ease: "none",
+                scrollTrigger: {
+                    trigger: img.parentElement,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        });
+
+        const slider = document.getElementById('solarSlider');
+        const capacityDisplay = document.getElementById('capacityDisplay');
+        const homesPowered = document.getElementById('homesPowered');
+        const cleanMWh = document.getElementById('cleanMWh');
+        const carbonOffset = document.getElementById('carbonOffset');
+
+        function updateSolarMetrics(kw) {
+            if (kw >= 1000) {
+                capacityDisplay.innerText = (kw / 1000).toFixed(1) + ' MW';
+            } else {
+                capacityDisplay.innerText = kw.toLocaleString() + ' kW';
+            }
+            const annualMWh = Math.round(kw * 1.65);
+            const homes = Math.round(annualMWh / 8.5);
+            const tonsCO2 = Math.round(annualMWh * 0.43);
+
+            homesPowered.innerText = homes.toLocaleString();
+            cleanMWh.innerText = annualMWh.toLocaleString() + ' MWh';
+            carbonOffset.innerText = tonsCO2.toLocaleString() + ' Tons';
+        }
+
+        slider.addEventListener('input', function() {
+            updateSolarMetrics(parseInt(this.value));
+        });
+        updateSolarMetrics(parseInt(slider.value));
+
+        let barChartRendered = false;
+        ScrollTrigger.create({
+            trigger: ".chart-container-bar",
+            start: "top 80%",
+            onEnter: () => {
+                if (!barChartRendered) {
+                    renderBarChart();
+                    barChartRendered = true;
+                }
+            }
+        });
+
+        function renderBarChart() {
+            const ctx = document.getElementById('emissionsChart').getContext('2d');
+            const data = {
+                labels: ['Coal', 'Natural Gas', 'Solar Panels'],
+                datasets: [{
+                    label: 'Pollution (Lbs of Carbon)',
+                    data: [2200, 900, 90], 
+                    backgroundColor: [
+                        'rgba(255, 255, 255, 0.2)', 
+                        'rgba(255, 255, 255, 0.5)', 
+                        '#FAD564'                   
+                    ],
+                    borderRadius: 6,
+                    borderWidth: 0,
+                    barThickness: 35
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    indexAxis: 'y', 
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleFont: { family: "'Space Grotesk', sans-serif" },
+                            bodyFont: { family: "'DM Sans', sans-serif" },
+                            padding: 12
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: 'rgba(255,255,255,0.5)', font: { family: "'DM Sans', sans-serif" } },
+                            title: { display: true, text: 'Pounds of Pollution Created', color: 'rgba(255,255,255,0.5)' }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: '#F8FAFC', font: { family: "'Space Grotesk', sans-serif", size: 14 } }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            };
+            new Chart(ctx, config);
+        }
+    </script>
+</body>
+</html>

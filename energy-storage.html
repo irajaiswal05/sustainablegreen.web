@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Storage | Sustainable Energy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --rhino: #1B475D;
+            --neptune: #8EBD9D;
+            --olive: #B4BD62;
+            --naples: #FAD564;
+            --bg-light: #F8FAFC;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--rhino);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .heading-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtext-accent, .nav-logo, .nav-links {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- NAVIGATION --- */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(27, 71, 93, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--bg-light);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--naples); }
+
+        .page-hero {
+            height: 85vh;
+            background-image: url('images/p25.png');
+            background-color: var(--rhino); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 5vw;
+            position: relative;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(27, 71, 93, 0.95) 0%, rgba(27, 71, 93, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--bg-light);
+            margin-top: 80px;
+        }
+
+        .reveal-wrap {
+            overflow: hidden;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(4rem, 8vw, 7.5rem);
+            line-height: 1.05;
+            margin: 15px 0;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--neptune);
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        .zig-zag-section {
+            padding: 150px 5vw;
+        }
+
+        .intro-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 120px;
+        }
+
+        .intro-header h2 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .intro-header p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .feature-row {
+            margin-bottom: 150px;
+            align-items: center;
+        }
+
+        .image-space-wrapper {
+            width: 100%;
+            height: 60vh;
+            border-radius: 24px;
+            overflow: hidden;
+            background-color: rgba(27, 71, 93, 0.05); 
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
+
+        .parallax-img {
+            width: 100%;
+            height: 120%; 
+            object-fit: cover;
+            position: absolute;
+            top: -10%;
+            left: 0;
+        }
+
+        .feature-text {
+            padding: 0 40px;
+        }
+
+        .feature-text h3 {
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            margin-bottom: 20px;
+            color: var(--rhino);
+            line-height: 1.1;
+        }
+
+        .feature-text p {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        /* --- FOOTER --- */
+        .landscape-footer {
+            height: 90vh;
+            background-image: url('images/p6.jpg');
+            background-size: cover;
+            background-position: bottom;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .footer-gradient {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, var(--bg-light) 0%, transparent 40%, rgba(27, 71, 93, 0.95) 100%);
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 0 5vw 20px;
+        }
+
+        .footer-links a, .social-icons a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-right: 30px;
+            transition: color 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover, .social-icons a:hover { color: var(--naples); }
+
+        .massive-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12.5vw, 18rem); 
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.7;
+            letter-spacing: -2px;
+            text-align: center;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .feature-row { margin-bottom: 100px; flex-direction: column !important; }
+            .feature-text { padding: 30px 0 0; }
+            .image-space-wrapper { height: 40vh; }
+            .footer-links { text-align: left !important; margin-top: 20px; }
+            .footer-links a { display: inline-block; margin-bottom: 10px; margin-right: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="premium-nav">
+        <a href="index.html" class="nav-logo">SUSTAINABLE.</a>
+        <div class="nav-links d-none d-md-block">
+            <a href="index.html">Home</a>
+            <a href="solar.html">Solar</a>
+            <a href="wind.html">Wind</a>
+            <a href="lifestyle.html">Lifestyle</a>
+            <a href="energy-storage.html">Storage</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="hero-content">
+            <div class="reveal-wrap">
+                <span class="subtext-accent text-white-50 reveal-target">04 — Power Storage</span>
+            </div>
+            <div class="reveal-wrap">
+                <h1 class="heading-elegant reveal-target">Endless<br>Power.</h1>
+            </div>
+            <div class="reveal-wrap mt-3">
+                <p class="reveal-target">We are moving past the limits of traditional power grids. The future relies on advanced, large-scale energy storage systems that keep power flowing 24/7.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="zig-zag-section">
+        <div class="container">
+            
+            <div class="intro-header gsap-fade-up">
+                <h2 class="heading-elegant">Building the Future of Power.</h2>
+                <p>Making clean energy is only part of the solution. The real challenge is finding clever ways to save, hold, and share that energy across the world without wasting a single drop.</p>
+            </div>
+
+            <div class="row feature-row gsap-fade-up">
+                <div class="col-lg-6">
+                    <div class="image-space-wrapper">
+                        <img src="images/p28.jpg" alt="Solid State Technology" class="parallax-img">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feature-text">
+                        <h3 class="heading-elegant">Advanced Solid-State Batteries</h3>
+                        <p>We are moving way beyond normal lithium batteries. New solid-state battery designs let us pack huge amounts of power into much smaller spaces while staying completely safe and cool.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row feature-row flex-lg-row-reverse gsap-fade-up">
+                <div class="col-lg-6">
+                    <div class="image-space-wrapper">
+                        <img src="images/p27.jpg" alt="Gravity Megastructures" class="parallax-img">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feature-text">
+                        <h3 class="heading-elegant">Gravity Energy Towers</h3>
+                        <p>Using basic physics instead of chemicals. Future power grids will use giant, automated towers and heavy underground weights. When we have extra electricity, we use it to lift heavy blocks, storing energy right in the Earth's gravity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row feature-row gsap-fade-up">
+                <div class="col-lg-6">
+                    <div class="image-space-wrapper">
+                        <img src="images/p26.jpg" alt="Liquid Metal" class="parallax-img">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feature-text">
+                        <h3 class="heading-elegant">Molten Salt & Liquid Metal Vaults</h3>
+                        <p>Changing how we store massive amounts of energy. By building huge pools of hot melted salt and liquid metals, we can trap sunshine heat for months and turn it back into electricity whenever we need it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row feature-row flex-lg-row-reverse gsap-fade-up" style="margin-bottom: 0;">
+                <div class="col-lg-6">
+                    <div class="image-space-wrapper">
+                        <img src="images/p24.png" alt="AI Grid Swarm" class="parallax-img">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feature-text">
+                        <h3 class="heading-elegant">Smart Energy Networks</h3>
+                        <p>The power grid of tomorrow won't just be one building. Guided by smart computers, millions of electric cars and smart homes will link together to share and balance power across the world instantly.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="landscape-footer">
+        <div class="footer-gradient"></div>
+        <div class="footer-content">
+            <div class="row align-items-end mb-4 border-bottom border-secondary pb-4">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <div class="social-icons mb-3">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                    <div style="color: var(--neptune); font-family: 'Space Grotesk', sans-serif;">
+                        Designed & Developed by <strong class="text-white">Ira Jaiswal</strong>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-lg-end footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="solar.html">Solar</a>
+                    <a href="wind.html">Wind</a>
+                    <a href="lifestyle.html">Lifestyle</a>
+                    <a href="energy-storage.html">Storage</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="massive-text">SUSTAINABLE</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".reveal-target", {
+            y: 150, 
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+            stagger: 0.15,
+            delay: 0.2
+        });
+
+        const fadeElements = document.querySelectorAll('.gsap-fade-up');
+        fadeElements.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        const parallaxImages = document.querySelectorAll('.parallax-img');
+        parallaxImages.forEach((img) => {
+            gsap.to(img, {
+                y: "15%", 
+                ease: "none",
+                scrollTrigger: {
+                    trigger: img.parentElement,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>

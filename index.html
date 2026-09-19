@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Energy | Home</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --rhino: #1B475D;
+            --neptune: #8EBD9D;
+            --olive: #B4BD62;
+            --naples: #FAD564;
+            --bg-light: #F8FAFC;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--rhino);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .heading-elegant {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtext-accent, .nav-logo, .nav-links, .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- NAVIGATION --- */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(27, 71, 93, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transform: translateY(-100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .premium-nav.visible { transform: translateY(0); }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--bg-light);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--naples); }
+
+     
+        .orbit-hero {
+            height: 200vh; 
+            position: relative;
+            background-color: var(--rhino);
+        }
+
+        .orbit-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-title-container {
+            position: absolute;
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+            padding: 0 20px;
+        }
+
+        .hero-title-container .subtext-accent {
+            color: var(--naples);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem); 
+            line-height: 1.1;
+            font-weight: 700;
+            color: var(--bg-light);
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6); 
+        }
+
+        .orbit-ring {
+            position: absolute;
+            width: min(55vw, 550px);
+            height: min(55vw, 550px);
+            border-radius: 50%;
+            border: 1px dashed rgba(255,255,255,0.15);
+            z-index: 6;
+        }
+
+        .earth-center {
+            position: absolute;
+            width: min(24vw, 240px); 
+            height: min(24vw, 240px);
+           
+            background-image: url('https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&auto=format&fit=crop');
+           
+            background-size: 180%; 
+            background-position: center;
+            background-color: transparent;
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 10px 40px rgba(0,0,0,0.3); 
+        }
+
+        .orbit-item {
+            position: absolute;
+            width: 120px; 
+            height: 120px; 
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            top: 50%;
+            left: 50%;
+            margin-top: -60px; 
+            margin-left: -60px; 
+        }
+
+        .item-1 { transform: rotate(0deg) translateX(calc(min(27.5vw, 275px))) rotate(0deg); background-image: url('images/p2.jpg'); }
+        .item-2 { transform: rotate(72deg) translateX(calc(min(27.5vw, 275px))) rotate(-72deg); background-image: url('images/p1.avif'); }
+        .item-3 { transform: rotate(144deg) translateX(calc(min(27.5vw, 275px))) rotate(-144deg); background-image: url('images/p4.jpg'); }
+        .item-4 { transform: rotate(216deg) translateX(calc(min(27.5vw, 275px))) rotate(-216deg); background-image: url('images/p7.jpg'); }
+        .item-5 { transform: rotate(288deg) translateX(calc(min(27.5vw, 275px))) rotate(-288deg); background-image: url('images/p5.avif'); }
+
+        .scroll-down-indicator {
+            position: absolute;
+            right: 4vw;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .scroll-down-indicator span {
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--neptune);
+            margin-bottom: 15px;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: var(--naples);
+            animation: scrollLine 2s infinite ease-in-out;
+        }
+
+        @keyframes scrollLine {
+            0% { top: -50%; }
+            100% { top: 100%; }
+        }
+
+        /* --- "WHO WE ARE" SECTION --- */
+        .intro-section {
+            padding: 120px 5vw;
+            background-color: var(--bg-light);
+            color: var(--rhino);
+        }
+
+        .intro-img-wrap {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            height: 500px;
+        }
+        
+        .intro-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-text h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .intro-text p {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+       
+        .sticky-section {
+            background-color: var(--rhino);
+            padding: 150px 5vw;
+        }
+
+        .sticky-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .sticky-header h2 {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            color: var(--bg-light);
+        }
+
+        .sticky-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 50px;
+        }
+
+        .sticky-card {
+            position: sticky;
+            border-radius: 32px;
+            margin-bottom: 40px;
+            box-shadow: 0 -15px 40px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            min-height: 400px;
+            color: var(--rhino);
+            overflow: hidden;
+        }
+
+        .sticky-text-side {
+            padding: 60px 50px;
+            flex: 1; 
+        }
+
+        .sticky-image-side {
+            flex: 1; 
+            height: 100%;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-yellow { background-color: var(--naples); top: 120px; }
+        .card-green { background-color: var(--neptune); top: 150px; }
+        .card-olive { background-color: var(--olive); top: 180px; }
+
+        .sticky-card h3 {
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            margin: 15px 0 20px;
+        }
+
+        .sticky-card p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin: 0;
+            color: rgba(27, 71, 93, 0.85);
+        }
+
+        /* --- BENTO GRID --- */
+        .bento-section {
+            background-color: var(--bg-light);
+            padding: 150px 0 100px;
+        }
+
+        .bento-header {
+            text-align: center;
+            margin-bottom: 80px;
+            color: var(--rhino);
+        }
+
+        .bento-card {
+            background-size: cover;
+            background-position: center;
+            height: 480px;
+            border-radius: 32px;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(27, 71, 93, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bento-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 25px 50px rgba(27, 71, 93, 0.15);
+        }
+
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(27,71,93,0.95) 0%, transparent 70%);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            color: var(--bg-light);
+        }
+
+        .card-content h3 { font-size: 2rem; margin-bottom: 10px; }
+        .card-content p { font-size: 1.1rem; opacity: 0.9; margin: 0; }
+        .bento-link { text-decoration: none; display: block; }
+
+     
+        .harmony-section {
+            background-color: var(--bg-light);
+            padding: 50px 5vw 150px;
+        }
+
+        .harmony-header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .harmony-header p {
+            font-size: 1.15rem;
+            color: #555;
+            margin-top: 15px;
+        }
+
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            align-items: center; 
+        }
+
+        .collage-item {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+     
+        .collage-item:nth-child(1) { height: 400px; }
+        .collage-item:nth-child(2) { height: 500px; transform: translateY(40px); }
+        .collage-item:nth-child(3) { height: 450px; transform: translateY(-20px); }
+        .collage-item:nth-child(4) { height: 380px; transform: translateY(30px); }
+
+        .collage-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: var(--neptune);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .contact-cta-section {
+            background-color: var(--rhino);
+            padding: 120px 5vw;
+            color: var(--bg-light);
+            text-align: center;
+        }
+
+        .contact-cta-header {
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .contact-cta-header h2 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 20px;
+        }
+
+        .contact-cta-header p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        .cta-pillars {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .cta-pillar {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            background: rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border-top: 3px solid var(--naples);
+            text-align: left;
+        }
+
+        .cta-pillar:nth-child(2) { border-color: var(--neptune); }
+        .cta-pillar:nth-child(3) { border-color: var(--olive); }
+
+        .cta-pillar h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--bg-light);
+        }
+
+        .cta-pillar p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .btn-premium {
+            display: inline-block;
+            background-color: var(--naples);
+            color: var(--rhino);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(250, 213, 100, 0.4);
+            color: var(--rhino);
+        }
+
+        /* --- LIVE DATA --- */
+        .data-section {
+            background-color: var(--bg-light);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--rhino);
+            font-weight: 700;
+        }
+
+        /* --- FOOTER --- */
+        .landscape-footer {
+            height: 90vh;
+            background-image: url('images/p6.jpg');
+            background-size: cover;
+            background-position: bottom;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .footer-gradient {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, var(--bg-light) 0%, transparent 40%, rgba(27, 71, 93, 0.95) 100%);
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 0 5vw 20px;
+        }
+
+        .footer-links a, .social-icons a {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-right: 30px;
+            transition: color 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover, .social-icons a:hover { color: var(--naples); }
+
+        .massive-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12.5vw, 18rem); 
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.7;
+            letter-spacing: -2px;
+            text-align: center;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .scroll-down-indicator { display: none; }
+            .orbit-item { width: 80px; height: 80px; margin-top: -40px; margin-left: -40px; } 
+            .sticky-card { flex-direction: column; padding: 0; min-height: auto; }
+            .sticky-text-side { padding: 40px 30px; }
+            .sticky-image-side { width: 100%; min-height: 250px; }
+            .collage-grid { grid-template-columns: repeat(2, 1fr); }
+            .collage-item:nth-child(n) { transform: translateY(0) !important; height: 300px !important; margin-bottom: 20px; }
+            .footer-links { text-align: left !important; margin-top: 20px; }
+            .footer-links a { display: inline-block; margin-bottom: 10px; margin-right: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="premium-nav">
+        <a href="index.html" class="nav-logo">SUSTAINABLE.</a>
+        <div class="nav-links d-none d-md-block">
+            <a href="index.html">Home</a>
+            <a href="solar.html">Solar</a>
+            <a href="wind.html">Wind</a>
+            <a href="lifestyle.html">Lifestyle</a>
+            <a href="energy-storage.html">Storage</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+  
+    <div class="orbit-hero" id="top">
+        <div class="orbit-sticky">
+            <div class="scroll-down-indicator">
+                <span>Scroll to Explore</span>
+                <div class="scroll-line"></div>
+            </div>
+
+            <div class="hero-title-container">
+                <span class="subtext-accent">Our Mission</span>
+                <h1 class="hero-title">A Cleaner<br>World.</h1>
+            </div>
+            
+            <div class="earth-center"></div>
+            
+            <div class="orbit-ring">
+                <div class="orbit-item item-1"></div>
+                <div class="orbit-item item-2"></div>
+                <div class="orbit-item item-3"></div>
+                <div class="orbit-item item-4"></div>
+                <div class="orbit-item item-5"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- "WHO WE ARE" SECTION -->
+    <section class="intro-section" id="intro">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 gsap-fade-up">
+                    <div class="intro-img-wrap">
+                        <img src="images/p10.jpg" alt="Who we are">
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-1 gsap-fade-up">
+                    <span class="subtext-accent text-muted">Who We Are</span>
+                    <h2 class="heading-elegant mt-2">Making clean energy simple.</h2>
+                    <p>We believe that saving the earth shouldn't be complicated. We are a team dedicated to helping everyone understand and use clean energy.</p>
+                    <p>From massive solar panels that power whole cities, down to the small choices you make in your own kitchen, we are here to show you exactly how a greener future is built.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STICKY NOTES -->
+    <section class="sticky-section">
+        <div class="container">
+            
+            <div class="sticky-header gsap-fade-up">
+                <span class="subtext-accent" style="color: var(--neptune);">Our Process</span>
+                <h2 class="heading-elegant mt-2">How we do it.</h2>
+            </div>
+            
+            <div class="sticky-wrapper">
+                
+             
+                <div class="sticky-card card-yellow">
+                    <div class="sticky-text-side">
+                        <span class="subtext-accent text-dark">Step 1</span>
+                        <h3 class="heading-elegant">Learn & Discover.</h3>
+                        <p>We break down complex science into easy-to-read guides. Whether it is wind power, solar farms, or smart batteries, we make sure everyone can easily understand how clean power actually works.</p>
+                    </div>
+                    <div class="sticky-image-side" style="background-image: url('images/c1.jpg');"></div>
+                </div>
+
+             
+                <div class="sticky-card card-green">
+                    <div class="sticky-text-side">
+                        <span class="subtext-accent text-dark">Step 2</span>
+                        <h3 class="heading-elegant">Change Daily Habits.</h3>
+                        <p>We provide simple, everyday tips that you can actually use right now. From unplugging old chargers to saving water at home, we show you how small personal changes add up to make a huge difference.</p>
+                    </div>
+                    <div class="sticky-image-side" style="background-image: url('images/c7.jpg');"></div>
+                </div>
+
+               
+                <div class="sticky-card card-olive">
+                    <div class="sticky-text-side">
+                        <span class="subtext-accent text-dark">Step 3</span>
+                        <h3 class="heading-elegant">Build the Future.</h3>
+                        <p>We track the massive global projects—like giant ocean wind farms and beautiful green cities—so you can see exactly how the world is working together to heal the planet.</p>
+                    </div>
+                    <div class="sticky-image-side" style="background-image: url('images/c6.jpg');"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BENTO GRID SECTION -->
+    <section class="bento-section" id="ecosystem">
+        <div class="container">
+            <div class="bento-header gsap-fade-up">
+                <span class="subtext-accent" style="color: var(--neptune);">Explore the Details</span>
+                <h2 class="heading-elegant display-4 mt-3">What We Cover.</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 gsap-fade-up">
+                    <a href="solar.html" class="bento-link">
+                        <div class="bento-card" style="background-image: url('images/p2.jpg');">
+                            <div class="card-content">
+                                <h3>Solar Energy</h3>
+                                <p>Powering our homes directly from the sun.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 gsap-fade-up">
+                    <a href="wind.html" class="bento-link">
+                        <div class="bento-card" style="background-image: url('images/p1.avif');">
+                            <div class="card-content">
+                                <h3>Wind Power</h3>
+                                <p>Catching the wind to create clean electricity.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 gsap-fade-up">
+                    <a href="lifestyle.html" class="bento-link">
+                        <div class="bento-card" style="background-image: url('images/p4.jpg');">
+                            <div class="card-content">
+                                <h3>Green Lifestyle</h3>
+                                <p>Simple habits to help the Earth every day.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="col-md-6 gsap-fade-up">
+                    <a href="energy-storage.html" class="bento-link">
+                        <div class="bento-card" style="background-image: url('images/p7.jpg');">
+                            <div class="card-content">
+                                <h3>Energy Storage</h3>
+                                <p>Smart batteries that save power for later.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="harmony-section">
+        <div class="container">
+            <div class="harmony-header gsap-fade-up">
+                <h2 class="heading-elegant">Everything Connected.</h2>
+                <p>See how solar roofs, windy fields, happy homes, and smart batteries all work together to create a better world for everyone.</p>
+            </div>
+
+            <div class="collage-grid">
+                <div class="gsap-fade-up">
+                    <div class="collage-item">
+                        <img src="images/c5.jpg" alt="Solar Village">
+                    </div>
+                    <div class="collage-caption">01 — Solar Villages</div>
+                </div>
+                
+                <div class="gsap-fade-up" style="transition-delay: 0.1s;">
+                    <div class="collage-item">
+                        <img src="images/c4.png" alt="Happy People Windmills">
+                    </div>
+                    <div class="collage-caption">02 — Wind Communities</div>
+                </div>
+                
+                <div class="gsap-fade-up" style="transition-delay: 0.2s;">
+                    <div class="collage-item">
+                        <img src="images/c3.png" alt="Mindful Living">
+                    </div>
+                    <div class="collage-caption">03 — Mindful Living</div>
+                </div>
+                
+                <div class="gsap-fade-up" style="transition-delay: 0.3s;">
+                    <div class="collage-item">
+                        <img src="images/c2.png" alt="Power Security">
+                    </div>
+                    <div class="collage-caption">04 — Power Security</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-cta-section gsap-fade-up">
+        <div class="container">
+            <div class="contact-cta-header">
+                <span class="subtext-accent" style="color: var(--olive);">Get Involved</span>
+                <h2 class="heading-elegant mt-2">Let's Build Together.</h2>
+                <p>You do not have to figure out clean energy all by yourself. Reaching out to us is the first step toward making your home and your community a greener place.</p>
+            </div>
+
+            <div class="cta-pillars">
+                <div class="cta-pillar">
+                    <h4 class="heading-elegant">Ask Anything</h4>
+                    <p>Confused about how solar panels work or what they cost? We will explain everything simply, with no confusing words.</p>
+                </div>
+                <div class="cta-pillar">
+                    <h4 class="heading-elegant">Custom Advice</h4>
+                    <p>Tell us a little bit about your home and lifestyle. We will give you simple, easy tips that fit your daily routine perfectly.</p>
+                </div>
+                <div class="cta-pillar">
+                    <h4 class="heading-elegant">Community Action</h4>
+                    <p>Want to do more? Contact us to learn about local green groups and clean energy projects happening right in your town.</p>
+                </div>
+            </div>
+
+            <a href="contact.html" class="btn-premium">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- LIVE DATA SECTION -->
+    <section class="data-section">
+        <div class="container gsap-fade-up">
+            <h2 class="heading-elegant mb-5" style="color: var(--rhino);">The Change Happening Right Now.</h2>
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <div class="stat-number" id="solar-counter">511,000</div>
+                    <div class="subtext-accent mt-3" style="color: #555;">Clean Power Added Today</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="stat-number" id="co2-counter">12,450</div>
+                    <div class="subtext-accent mt-3" style="color: #555;">Homes Powered Right Now</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="landscape-footer">
+        <div class="footer-gradient"></div>
+        <div class="footer-content">
+            <div class="row align-items-end mb-4 border-bottom border-secondary pb-4">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <div class="social-icons mb-3">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                    <div style="color: var(--neptune); font-family: 'Space Grotesk', sans-serif;">
+                        Designed & Developed by <strong class="text-white">Ira Jaiswal</strong>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-lg-end footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="solar.html">Solar</a>
+                    <a href="wind.html">Wind</a>
+                    <a href="lifestyle.html">Lifestyle</a>
+                    <a href="energy-storage.html">Storage</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="massive-text">SUSTAINABLE</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        ScrollTrigger.create({
+            trigger: "#intro",
+            start: "top 80%", 
+            onEnter: () => document.querySelector(".premium-nav").classList.add("visible"),
+            onLeaveBack: () => document.querySelector(".premium-nav").classList.remove("visible")
+        });
+
+        let tlOrbit = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".orbit-hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: 1.5 
+            }
+        });
+
+        tlOrbit.to(".orbit-ring", { rotation: 360, ease: "none" }, 0);
+        tlOrbit.to(".orbit-item", { rotation: -360, ease: "none" }, 0);
+        tlOrbit.to(".earth-center", { scale: 0.6, opacity: 0.3, ease: "power1.inOut" }, 0);
+        tlOrbit.to(".scroll-down-indicator", { opacity: 0 }, 0);
+        tlOrbit.to(".hero-title-container", { opacity: 0, y: -50, ease: "power1.in" }, 0);
+
+        const fadeElements = document.querySelectorAll('.gsap-fade-up');
+        fadeElements.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        function runCounter(elementId, baseNumber, increment) {
+            let currentNum = baseNumber;
+            setInterval(() => {
+                currentNum += increment;
+                document.getElementById(elementId).innerText = currentNum.toLocaleString();
+            }, 3000);
+        }
+        
+        runCounter('co2-counter', 12450, 4); 
+        runCounter('solar-counter', 511000, 12);
+    </script>
+</body>
+</html>

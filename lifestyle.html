@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Lifestyle | Sustainable Energy</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:wght@500;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root 
+        {
+            --rhino: #1B475D;
+            --neptune: #8EBD9D;
+            --olive: #B4BD62;
+            --naples: #FAD564;
+            --bg-light: #F8FAFC;
+        }
+
+        body, html 
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--rhino);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .heading-elegant 
+        {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtext-accent, .nav-logo, .nav-links, .chart-label 
+        {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    
+        .premium-nav 
+        {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(27, 71, 93, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-logo 
+        {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--bg-light);
+            text-decoration: none;
+        }
+
+        .nav-links a 
+        {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-left: 40px;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--naples); }
+
+        /* --- HERO SECTION --- */
+        .page-hero 
+        {
+            height: 80vh;
+            background-image: url('images/p21.jpg');
+            background-color: var(--rhino); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 5vw;
+            position: relative;
+        }
+
+        .page-hero::before 
+        {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(27, 71, 93, 0.95) 0%, rgba(27, 71, 93, 0.4) 100%);
+            z-index: 1;
+        }
+
+        .hero-content 
+        {
+            position: relative;
+            z-index: 2;
+            color: var(--bg-light);
+            margin-top: 80px;
+        }
+
+        .reveal-wrap { overflow: hidden; display: block; }
+
+        .hero-content h1 
+        {
+            font-size: clamp(3.5rem, 7vw, 6.5rem);
+            line-height: 1.05;
+            margin: 15px 0;
+        }
+
+        .hero-content p 
+        {
+            font-size: 1.2rem;
+            color: var(--neptune);
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        /* --- DATA VISUALIZATION SECTION --- */
+        .data-section 
+        {
+            padding: 120px 5vw;
+            background-color: var(--rhino);
+            color: var(--bg-light);
+        }
+
+        .chart-container 
+        {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .data-text h2 
+        {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 20px;
+            color: var(--bg-light);
+        }
+
+        .data-text p 
+        {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .stat-highlight 
+        {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--naples);
+            font-family: 'Space Grotesk', sans-serif;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- CREATIVE GRID SECTION --- */
+        .grid-section 
+        {
+            padding: 150px 5vw;
+            background-color: var(--bg-light);
+        }
+
+        .grid-header 
+        {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .grid-header h2 
+        {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            color: var(--rhino);
+        }
+
+        .lifestyle-grid 
+        {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 30px;
+            grid-auto-rows: minmax(300px, auto);
+        }
+
+        .grid-item 
+        {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .item-large { grid-column: span 8; grid-row: span 2; }
+        .item-tall { grid-column: span 4; grid-row: span 2; }
+        .item-wide { grid-column: span 12; height: 400px; }
+        .item-half { grid-column: span 6; height: 350px; }
+
+        .grid-overlay 
+        {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(27,71,93,0.95) 0%, rgba(27,71,93,0.2) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            transition: background 0.4s ease;
+        }
+
+        .grid-item:hover .grid-overlay 
+        {
+            background: linear-gradient(to top, rgba(27,71,93,0.98) 0%, rgba(27,71,93,0.5) 100%);
+        }
+
+        .grid-overlay h3 
+        {
+            color: var(--bg-light);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .grid-overlay p 
+        {
+            color: var(--neptune);
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            max-width: 80%;
+        }
+
+        .grid-item:hover .grid-overlay h3,
+        .grid-item:hover .grid-overlay p 
+        {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* --- ACCORDION TIPS SECTION --- */
+        .tips-section 
+        {
+            padding: 0 5vw 150px;
+            background-color: var(--bg-light);
+        }
+
+        .accordion-wrapper 
+        {
+            max-width: 900px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(27, 71, 93, 0.2);
+        }
+
+        .accordion-item 
+        {
+            border-bottom: 1px solid rgba(27, 71, 93, 0.2);
+        }
+
+        .accordion-header 
+        {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            background: none;
+            border: none;
+            color: var(--rhino);
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .accordion-header h3 
+        {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        .accordion-header:hover h3 
+        {
+            color: var(--neptune);
+        }
+
+        .accordion-icon 
+        {
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+
+        .accordion-icon::before, .accordion-icon::after 
+        {
+            content: '';
+            position: absolute;
+            background-color: var(--rhino);
+            transition: transform 0.4s ease, background-color 0.3s ease;
+        }
+
+        .accordion-icon::before { top: 11px; left: 0; width: 24px; height: 2px; }
+        .accordion-icon::after { top: 0; left: 11px; width: 2px; height: 24px; }
+
+        .accordion-item.active .accordion-icon::after 
+        {
+            transform: rotate(90deg);
+        }
+        
+        .accordion-item.active .accordion-icon::before,
+        .accordion-item.active .accordion-icon::after 
+        {
+            background-color: var(--neptune);
+        }
+
+        .accordion-content 
+        {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-item.active .accordion-content 
+        {
+            grid-template-rows: 1fr;
+        }
+
+        .accordion-content-inner 
+        {
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            padding-bottom: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content-inner 
+        {
+            padding-bottom: 40px;
+            opacity: 1;
+            transition: opacity 0.5s ease 0.2s, padding 0.5s ease;
+        }
+
+        .accordion-content-inner img 
+        {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .accordion-content-inner p 
+        {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin: 0;
+        }
+
+        /* --- 3D FLIP-CARD SECTION --- */
+        .flip-section 
+        {
+            padding: 0 5vw 150px;
+            background-color: var(--bg-light);
+        }
+        
+        .flip-container 
+        {
+            perspective: 1000px;
+            margin-bottom: 30px;
+        }
+        
+        .flip-card 
+        {
+            width: 100%;
+            height: 450px;
+            position: relative;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .flip-container:hover .flip-card 
+        {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-front, .flip-back 
+        {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+        
+        .flip-front 
+        {
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .flip-front::before 
+        {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(27,71,93,0.8) 0%, transparent 60%);
+        }
+        
+        .flip-front h3 
+        {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: var(--bg-light);
+            z-index: 2;
+            margin: 0;
+        }
+        
+        .flip-back 
+        {
+            transform: rotateY(180deg);
+            background-color: var(--rhino);
+            color: var(--bg-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .flip-back h3 
+        {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            color: var(--naples);
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+        
+        .flip-back p 
+        {
+            font-size: 1.5rem;
+            color: var(--neptune);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* --- FOOTER --- */
+        .landscape-footer 
+        {
+            height: 90vh;
+            background-image: url('images/p6.jpg');
+            background-size: cover;
+            background-position: bottom;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .footer-gradient 
+        {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, var(--bg-light) 0%, transparent 40%, rgba(27, 71, 93, 0.95) 100%);
+        }
+
+        .footer-content 
+        {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 0 5vw 20px;
+        }
+
+        .footer-links a, .social-icons a 
+        {
+            color: var(--bg-light);
+            text-decoration: none;
+            margin-right: 30px;
+            transition: color 0.3s;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover, .social-icons a:hover { color: var(--naples); }
+
+        .massive-text 
+        {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 12.5vw, 18rem); 
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 0.7;
+            letter-spacing: -2px;
+            text-align: center;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 991px) 
+        {
+            .item-large, .item-tall, .item-wide, .item-half { grid-column: span 12; height: 350px; }
+            .grid-overlay p { opacity: 1; transform: translateY(0); max-width: 100%; }
+            .grid-overlay h3 { transform: translateY(0); }
+            
+            .accordion-content-inner { flex-direction: column; gap: 20px; }
+            .accordion-content-inner img { width: 100%; height: 200px; }
+            
+            .flip-card { height: 350px; }
+            
+            .footer-links { text-align: left !important; margin-top: 20px; }
+            .footer-links a { display: inline-block; margin-bottom: 10px; margin-right: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="premium-nav">
+        <a href="index.html" class="nav-logo">SUSTAINABLE.</a>
+        <div class="nav-links d-none d-md-block">
+            <a href="index.html">Home</a>
+            <a href="solar.html">Solar</a>
+            <a href="wind.html">Wind</a>
+            <a href="lifestyle.html">Lifestyle</a>
+            <a href="energy-storage.html">Storage</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="hero-content">
+            <div class="reveal-wrap">
+                <span class="subtext-accent text-white-50 reveal-target">03 — The Human Element</span>
+            </div>
+            <div class="reveal-wrap">
+                <h1 class="heading-elegant reveal-target">Conscious<br>Living.</h1>
+            </div>
+            <div class="reveal-wrap mt-3">
+                <p class="reveal-target">True sustainability goes beyond big factories and power grids. It starts with how we eat, travel, and live in our own homes every single day.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="data-section">
+        <div class="container-fluid p-0">
+            <div class="row align-items-center">
+                
+                <div class="col-lg-5 offset-lg-1 mb-5 mb-lg-0 gsap-fade-up">
+                    <div class="data-text">
+                        <span class="chart-label" style="color: var(--neptune);">Understanding Our Impact</span>
+                        <h2 class="heading-elegant mt-2">Where does your carbon footprint come from?</h2>
+                        <p>Before we can change our habits, we need to know what causes pollution. This chart shows where the average person's carbon footprint comes from. Driving and home energy make up the biggest chunks, which means your daily choices make a massive difference.</p>
+                        
+                        <div class="mt-5">
+                            <span class="stat-highlight">60%</span>
+                            <span class="chart-label text-white-50">Can be cut down just by changing daily habits</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 offset-lg-1 gsap-fade-up">
+                    <div class="chart-container">
+                        <canvas id="footprintChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="grid-section">
+        <div class="container-fluid">
+            
+            <div class="grid-header gsap-fade-up">
+                <span class="subtext-accent text-muted">Small Steps, Big Results</span>
+                <h2 class="heading-elegant mt-3">Changing our daily habits.</h2>
+            </div>
+
+            <div class="lifestyle-grid">
+                
+                <div class="grid-item item-large gsap-fade-up" style="background-image: url('images/p16.jpg');">
+                    <div class="grid-overlay">
+                        <h3 class="heading-elegant">Eating More Plants</h3>
+                        <p>Eating less meat and more plant-based foods is the single best way a person can help lower pollution and save land around the world.</p>
+                    </div>
+                </div>
+
+                <div class="grid-item item-tall gsap-fade-up" style="background-image: url('images/p22.jpg');">
+                    <div class="grid-overlay">
+                        <h3 class="heading-elegant">Creating Less Waste</h3>
+                        <p>Cutting out single-use plastics and buying things that last. When we choose reusable items over disposable ones, we keep tons of trash out of our landfills.</p>
+                    </div>
+                </div>
+
+                <div class="grid-item item-half gsap-fade-up" style="background-image: url('images/p13.png');">
+                    <div class="grid-overlay">
+                        <h3 class="heading-elegant">Sustainable Clothes</h3>
+                        <p>Making clothes creates a huge amount of pollution. Buying second-hand items and choosing organic fabrics helps break the harmful fast-fashion cycle.</p>
+                    </div>
+                </div>
+
+                <div class="grid-item item-half gsap-fade-up" style="background-image: url('images/p18.avif');">
+                    <div class="grid-overlay">
+                        <h3 class="heading-elegant">Greener Travel</h3>
+                        <p>Swapping short car rides for walking or electric bikes immediately cleans up the air in our cities and lowers your personal carbon footprint.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TIPS SECTION -->
+    <section class="tips-section">
+        <div class="container">
+            <div class="grid-header gsap-fade-up mb-5">
+                <h2 class="heading-elegant">Everyday Tips.</h2>
+            </div>
+            
+            <div class="accordion-wrapper gsap-fade-up">
+                
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3 class="heading-elegant">Unplug Hidden Energy Wasters</h3>
+                        <div class="accordion-icon"></div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <img src="images/p23.png" alt="Smart Plug">
+                            <p>Things plugged into the wall still use electricity even when they are turned off, making up about 10% of your home's energy bill. Using smart power strips or unplugging devices when you aren't using them easily stops this hidden waste.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3 class="heading-elegant">The 30-Wear Rule</h3>
+                        <div class="accordion-icon"></div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <img src="images/p11.png" alt="Sustainable Wardrobe">
+                            <p>Before buying new clothes, ask yourself: 'Will I wear this at least 30 times?' This simple question helps stop impulse buys and builds a closet full of clothes that actually last.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3 class="heading-elegant">Kitchen Composting</h3>
+                        <div class="accordion-icon"></div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <img src="images/p14.png" alt="Kitchen Compost">
+                            <p>When food scraps rot in normal trash dumps, they release harmful methane gas. Using a simple, odor-free compost bin on your kitchen counter turns that waste into healthy soil instead.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <h3 class="heading-elegant">Smart Temperature Tweaks</h3>
+                        <div class="accordion-icon"></div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <img src="images/p8.jpg" alt="Smart Thermostat">
+                            <p>Changing your thermostat by just 2 degrees—down in the winter and up in the summer—can save a huge amount of energy. Using a smart thermostat makes this automatic when you leave the house.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D FLIP-CARD SECTION -->
+    <section class="flip-section">
+        <div class="container">
+            <div class="grid-header gsap-fade-up mb-5">
+                <span class="subtext-accent text-muted">Making the Switch</span>
+                <h2 class="heading-elegant mt-3">Seeing the real difference.</h2>
+            </div>
+            
+            <div class="row">
+                
+                <!-- Card 1 -->
+                <div class="col-lg-4 col-md-6 gsap-fade-up">
+                    <div class="flip-container">
+                        <div class="flip-card">
+                            <div class="flip-front" style="background-image: url('images/p20.avif');">
+                                <h3 class="heading-elegant">Reusable Cup</h3>
+                            </div>
+                            <div class="flip-back">
+                                <h3>-90%</h3>
+                                <p class="heading-elegant">Less Trash in Landfills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="col-lg-4 col-md-6 gsap-fade-up">
+                    <div class="flip-container">
+                        <div class="flip-card">
+                            <div class="flip-front" style="background-image: url('images/p15.jpg');">
+                                <h3 class="heading-elegant">LED Bulbs</h3>
+                            </div>
+                            <div class="flip-back">
+                                <h3>-80%</h3>
+                                <p class="heading-elegant">Less Energy Used</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="col-lg-4 col-md-6 gsap-fade-up">
+                    <div class="flip-container">
+                        <div class="flip-card">
+                            <div class="flip-front" style="background-image: url('images/p19.jpg');">
+                                <h3 class="heading-elegant">Canvas Bags</h3>
+                            </div>
+                            <div class="flip-back">
+                                <h3>Zero</h3>
+                                <p class="heading-elegant">Micro-plastics Stopped</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="landscape-footer">
+        <div class="footer-gradient"></div>
+        <div class="footer-content">
+            <div class="row align-items-end mb-4 border-bottom border-secondary pb-4">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <div class="social-icons mb-3">
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                    <div style="color: var(--neptune); font-family: 'Space Grotesk', sans-serif;">
+                        Designed & Developed by <strong class="text-white">Ira Jaiswal</strong>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-lg-end footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="solar.html">Solar</a>
+                    <a href="wind.html">Wind</a>
+                    <a href="lifestyle.html">Lifestyle</a>
+                    <a href="energy-storage.html">Storage</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="massive-text">SUSTAINABLE</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Hero Reveal
+        gsap.from(".reveal-target", {
+            y: 150, 
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+            stagger: 0.15,
+            delay: 0.2
+        });
+
+        // 2. General Scroll Fade
+        const fadeElements = document.querySelectorAll('.gsap-fade-up');
+        fadeElements.forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // 3. Custom Accordion Logic
+        const accordions = document.querySelectorAll('.accordion-header');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                const item = this.parentElement;
+                
+                // Optional: Close all other open items
+                document.querySelectorAll('.accordion-item').forEach(other => {
+                    if(other !== item) other.classList.remove('active');
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // 4. Chart.js Initialization
+        let chartRendered = false;
+        ScrollTrigger.create({
+            trigger: ".chart-container",
+            start: "top 75%",
+            onEnter: () => {
+                if (!chartRendered) {
+                    renderChart();
+                    chartRendered = true;
+                }
+            }
+        });
+
+        function renderChart() {
+            const ctx = document.getElementById('footprintChart').getContext('2d');
+            const data = {
+                labels: ['Transportation', 'Home Energy', 'Diet/Food', 'Goods & Services'],
+                datasets: [{
+                    data: [35, 25, 20, 20],
+                    backgroundColor: ['#FAD564', '#8EBD9D', '#B4BD62', '#F8FAFC'],
+                    borderWidth: 0,
+                    hoverOffset: 15
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: '#F8FAFC',
+                                font: { family: "'DM Sans', sans-serif", size: 14 },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(27, 71, 93, 0.9)',
+                            titleFont: { family: "'Space Grotesk', sans-serif" },
+                            bodyFont: { family: "'DM Sans', sans-serif", size: 14 },
+                            padding: 15,
+                            cornerRadius: 8,
+                            displayColors: false
+                        }
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true,
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    }
+                }
+            };
+            new Chart(ctx, config);
+        }
+    </script>
+</body>
+</html>
